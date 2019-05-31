@@ -20,6 +20,14 @@ export default (state, { type, payload }) => {
                 isAuth: payload,
             }
         }
+
+        case "SIGN_OUT": {
+            return {
+                ...state,
+                isAuth: false,
+                currentUser: null,
+            }
+        }
         
         default: {
             return state;
