@@ -25,7 +25,8 @@ const Login = ({ classes }) => {
       ME_QUERY
     );
 
-    dispatch({type: 'LOGIN_USER', payload: me})
+    dispatch({type: 'LOGIN_SUCCESS', payload: me})
+    dispatch({ type: 'IS_LOGGED_IN', payload: googleUser.isSignedIn() })
     } catch (error) {
       onFailure(error)
     }
@@ -33,7 +34,7 @@ const Login = ({ classes }) => {
 
   const onFailure = (err) => {
     console.error("Error logging in", err);
-    dispatch({type: 'LOGIN_USER', payload: null})
+    dispatch({ type: 'LOGIN_ERROR' })
   }
 
   return (
